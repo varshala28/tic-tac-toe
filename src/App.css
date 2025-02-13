@@ -1,0 +1,94 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #1a2a48, #0a0a2a); /* Dark blue gradient for the entire background */
+  background-size: 200% 200%; /* Making the gradient a bit larger for a subtle dynamic effect */
+  animation: gradientMove 10s ease-in-out infinite; /* Animation to slowly shift the gradient for depth */
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.board {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(145deg, #1c1c3c, #2b2b55); /* Dark blue gradient for depth */
+  border-radius: 15px;
+  border: 2px solid #3b3b6b; /* Slightly lighter blue border */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 51, 102, 0.4); /* Deep shadow and soft blue glow */
+  background-color: #1c1c3c;
+  position: relative; /* Necessary for inner shadow */
+}
+
+.board::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: linear-gradient(145deg, #2d2d55, #1a1a3c); /* Highlight gradient to create depth */
+  border-radius: 15px;
+  z-index: 0; /* Make sure the highlight stays below the content */
+  filter: blur(8px); /* Softens the highlight for a glowing effect */
+}
+
+.row {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+}
+
+.square {
+  flex: 33%;
+  height: 100%;
+  border: 2px solid #405b8c; /* Lighter blue border for each square */
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 36px; /* Larger font for better visibility */
+  color: #e6f1ff; /* Light icy blue text for contrast */
+  transition: background-color 0.3s, transform 0.1s ease-in-out;
+  font-weight: bold;
+  position: relative;
+}
+
+.square:hover {
+  background-color: #3a4d7d; /* Slightly lighter blue on hover */
+  transform: scale(1.0); /* Slight zoom effect on hover */
+}
+
+.square:active {
+  background-color: #4a6587; /* Darker blue when clicked */
+  transform: scale(0.98); /* Slight shrink effect when clicked */
+}
+
+.x {
+  color: #55b3e6; /* Light blue color for X */
+  text-shadow: 2px 2px 4px rgba(85, 179, 230, 0.4); /* Soft glowing effect */
+}
+
+.o {
+  color: #ff7f50; /* Coral color for O to stand out against blue */
+  text-shadow: 2px 2px 4px rgba(255, 127, 80, 0.4); /* Soft glowing effect */
+}
